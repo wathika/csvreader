@@ -17,3 +17,9 @@ CSV.parse(a_string) { |row| puts row.inspect }
 
 #CSV.parse (without a block) === CSV.read interms of output
 #CSV.parse (with a block) === CSV.foreach interms of output
+average_money_spent = Array.new
+  CSV.foreach('customers.csv', converters: :numeric) do |row|
+    average_money_spent << row[2] / row[1]
+    # row is just an ordinary array and you access its elements with []
+  puts average_money_spent
+  end #=> Undefined method '/' for "2548":String
